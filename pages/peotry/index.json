@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "component-tag-layout": "../../common/component/guessgames/guessgames"
+  }
+}

@@ -1,0 +1,66 @@
+<!--pages/games/peotry/index.wxml-->
+<wxs src='../../common/wxs/randomperson.wxs' module="randomPerson" />
+<view class='peotryIndex bgImg64'>
+<view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+      <icon type="waiting" size="45"/><text>刷新中...</text></view>
+    <view class='topBox'>
+        <view class='top_left' capture-bind:tap="shareCenterHandler" >
+            <image src='{{avatarurl}}' />
+        </view>
+        <view class='top_right'>
+            <view class='top_info'>
+                <view class='top_info_name'>
+                    <text class='t1'>{{nickname}}</text>
+                    <text class='t2'>Lv{{level}}</text>
+                    <text class='t3'>{{title}}</text>
+                </view>
+                <view class='top_info_share'>
+                    <button open-type="share">分享</button>
+                </view>
+            </view>
+            <view class='top_sore'>
+                <view class='top_sore_sl'>
+                    <text class='t1'>脑力值：</text><text class='t2'>{{mental}}</text>
+                </view>
+                <view class='top_sore_sl sr'>
+                    <text class='t1'>拱墅区排名：</text><text class='t2'>{{rand}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='panelUl'>
+      <view class='panelLi animated fadeInLeft ' capture-bind:tap="goStartHandler" data-linknum="1" style='-webkit-animation-delay: 0.2s;' >
+          <view class='wraper listBg action'>
+              <view class='v1'>入门测试</view>
+              <view class='v2'>当前{{randomPerson.onlines[0]}}人</view>
+              <view class='v3'><view class='icon icon_01'></view></view>
+          </view>
+      </view>
+      <view class='panelLi animated fadeInRight ' capture-bind:tap="goStartHandler" data-linknum="2" style='-webkit-animation-delay: 0.4s;' >
+          <view class='wraper listBg {{hastoken?"action":""}}'>
+              <view class='v1'>初级</view>
+              <view class='v2'>当前{{randomPerson.onlines[1]}}人</view>
+              <view class='v3'><view class='icon {{hastoken?"icon_01":"icon_02"}}'></view></view>
+          </view>
+      </view>
+      <view class='panelLi animated fadeInLeft ' capture-bind:tap="goStartHandler" data-linknum="3" style='-webkit-animation-delay: 0.6s;' >
+          <view class='wraper listBg {{hastoken?"action":""}}'>
+              <view class='v1'>中级</view>
+              <view class='v2'>当前{{randomPerson.onlines[2]}}人</view>
+              <view class='v3'><view class='icon {{hastoken?"icon_01":"icon_02"}}'></view></view>
+          </view>
+      </view>
+      <view class='panelLi saf animated fadeInRight ' capture-bind:tap="goStartHandler" data-linknum="4" style='-webkit-animation-delay: 0.8s;' >
+          <view class='wraper listBg {{hastoken?"action":""}}'>
+              <view class='v1'>高级</view>
+              <view class='v2'>当前{{randomPerson.onlines[3]}}人</view>
+              <view class='v3'><view class='icon {{hastoken?"icon_01":"icon_02"}}'></view></view>
+          </view>
+      </view>
+      <view class='panelLi animated fadeInLeft' style='-webkit-animation-delay: 1s;' >
+          <view class='panelTips listBg '>
+              <text>更多游戏正在开发中...</text>
+          </view>
+      </view>
+    </view>
+</view>

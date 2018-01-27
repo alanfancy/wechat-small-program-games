@@ -1,0 +1,88 @@
+<!--pages/games/peotry/guessauthor/index.wxml-->
+<view class='gamesOutBox bgImg64'>
+  
+  <component-tag-layout req-data="{{questionData}}" user-token="{{usertoken}}" link-num="{{linkNum}}" bind:overevent="overEvent"></component-tag-layout>
+  <!--
+  <block>
+  <view class='questionBox '>
+      <view class='qbBg'>
+          <view class='qbInBox'>
+            <text>故人西辞黄鹤楼，</text>
+            <text>烟花三月下扬州。</text>
+          </view>
+      </view>
+  </view>
+  
+  <view class='titleBox'>
+      <text>识别该内容的作者是谁？</text>
+  </view>
+  <view class='answerUl'>
+    <block wx:for="{{answerData}}" wx:key="*this" >
+      <view class='answerLi {{item.cls}}' data-index="{{index}}" capture-bind:tap="answerSelectHandler"><text>{{item.txt}}</text></view>
+      </block>
+  </view>
+  </block>
+  -->
+   <!--
+  <view class='questionBox '>
+      <view class='wordBox'>
+          <view class='wordUl'>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+        </view>
+        <view class='tips'>长按方块删除已选内容</view>
+      </view>
+  </view>
+  -->
+  
+  <!--
+  <view class='questionBox '>
+      <view class='wordBox'>
+          <view class='wordUl'>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+            <view class='wordLi '><text></text></view>
+        </view>
+        <view class='tips'>长按方块删除已选内容</view>
+      </view>
+  </view>
+  -->
+  <!--
+  <view class='answerUl sevenUl'>
+    <block wx:for="{{answerData}}" wx:key="*this" >
+      <view class='answerLi {{item.cls}}' data-index="{{index}}" capture-bind:tap="answerSelectHandler"><text>{{item.txt}}</text></view>
+      </block>
+  </view>
+  <view class='answerUl sevenUl'>
+    <block wx:for="{{answerData}}" wx:key="*this" >
+      <view class='answerLi {{item.cls}}' data-index="{{index}}" capture-bind:tap="answerSelectHandler"><text>{{item.txt}}</text></view>
+      </block>
+  </view>
+  -->
+  <!--
+  <view class='answerUl fiveUl'>
+    <block wx:for="{{answerData}}" wx:key="*this" >
+      <view class='answerLi {{item.cls}}' data-index="{{index}}" capture-bind:tap="answerSelectHandler"><text>{{item.txt}}</text></view>
+      </block>
+  </view>
+  <view class='answerUl fiveUl'>
+    <block wx:for="{{answerData}}" wx:key="*this" >
+      <view class='answerLi {{item.cls}}' data-index="{{index}}" capture-bind:tap="answerSelectHandler"><text>{{item.txt}}</text></view>
+      </block>
+  </view>
+  <view class='answerUl fiveUl'>
+    <block wx:for="{{answerData}}" wx:key="*this" >
+      <view class='answerLi {{item.cls}}' data-index="{{index}}" capture-bind:tap="answerSelectHandler"><text>{{item.txt}}</text></view>
+      </block>
+  </view>
+  -->
+</view>

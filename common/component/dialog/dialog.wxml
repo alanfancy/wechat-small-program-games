@@ -1,0 +1,19 @@
+<view class='dlg_outBox'>
+         <view class='dlg_box'>
+              <p class='dlg_close'>
+                  <a class='dlg_closeBtn' href='javascript:void(null)'>vv</a>
+              </p>
+              <view class='dlg_tit'>{{dlgTitle}}</view>
+              <view class='dlg_con'>
+                  <view class='dlg_wraper'>
+                      <slot />
+                  </view>
+              </view>
+              <view class='dlg_footer'>
+                  <view class='dlg_wraper'>
+                    <p class='dlg_btn'>vv</p>
+                  </view>
+              </view>
+        </view>
+        <view class='dlg_masker'></view>
+</view>

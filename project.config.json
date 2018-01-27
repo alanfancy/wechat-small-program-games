@@ -1,0 +1,56 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.1",
+	"appid": "wxde65fb27ac3e83e1",
+	"projectname": "%E5%AE%B6%E9%95%BF%E7%9C%8B%E7%82%B9",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": 0,
+					"name": "手机绑定",
+					"pathName": "pages/user/bindphone/index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "古诗古词  游戏页",
+					"pathName": "pages/peotry/index",
+					"query": "num=1"
+				},
+				{
+					"id": 2,
+					"name": "古诗古词 开始页",
+					"pathName": "pages/gamelist/index",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "古诗古词  结果页",
+					"pathName": "pages/gameresult/result",
+					"query": "num=1"
+				}
+			]
+		}
+	}
+}

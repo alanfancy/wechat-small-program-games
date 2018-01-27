@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/gamelist/index",
+    "pages/peotry/index",
+    "pages/gameresult/result",
+    "pages/user/bindphone/index",
+    "pages/logs/logs",
+    "pages/hall/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "#fff",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "家长看点",
+    "navigationBarTextStyle": "#fff"
+  }
+}

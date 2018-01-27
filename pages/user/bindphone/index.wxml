@@ -1,0 +1,25 @@
+<!--pages/user/bindphone/bindphone.wxml-->
+<view class='bindOutBox bindBg'>
+<view class='bindBox'>
+    <view class='headImgBox'>
+      <view><image  src='{{avatarurl}}' /></view>
+      <view><text>{{nickname}}</text></view>
+    </view>
+    <block wx:if="{{hastoken}}">
+        <view class='hasBindBox'><text>已绑定手机号：</text><input type='text' value='{{userphone}}' disabled ></input></view>
+        
+    </block>
+    <block wx:else>
+    <view class='bindFormBox'>
+      <view class='phoneBox'><input type='number' placeholder='输入手机号' bindinput="getInpPhone" maxlength='11' auto-focus ></input></view>
+      <view  class='codeBox'>
+        <view class='codeInpBox'><input type='number' placeholder='输入短信验证码' disabled='{{allowinpcode?false:true }}' class="{{allowclick ? 'disable' : ''}}" maxlength='6'  bindinput="getInpCode"></input></view>
+        <view class='codeBtnBox'><button capture-bind:tap="sendMobileMsg"  class="{{allowclick ? '' : 'disable'}}" disabled='{{allowclick}}' >{{getcodebtn}}</button></view>
+      </view>
+    </view>
+    <view class='tipsTxt'><text class='tips {{tipscls}}'>{{tipsmsg}}</text></view>
+    <view class='bindBtn'><view class='btnBg action' capture-bind:tap="submitBind">完成绑定</view></view>
+    </block>
+    <view class='bindBtn'><view class='btnBg action' capture-bind:tap="backBind">返回</view></view>
+</view>
+</view>

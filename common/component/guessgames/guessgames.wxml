@@ -1,0 +1,163 @@
+  <view class='topPanel'>
+      <view class='timeBox'><text>用时：</text><text class='c_fe5a00'>{{usetime}}</text></view>
+      <view class='musicBox animated infinite {{isPlay?"enable pulse":""}}'  animation="{{bgMusicAnimationData}}" capture-bind:tap="musicControlHandler" data-isplay="{{isPlay}}">
+          <audio src="{{src}}" id="myAudio" ></audio>
+      </view>
+      <view class='soreBox'><text>得分：</text><text class='sore c_fe5a00'>{{topicScore}}分</text></view>
+      <view class='flyText {{flyTextAnimation?"anima":""}}'><text>+10</text></view>
+  </view>
+
+    <block wx:if="{{topics.question_type<4}}">
+      <view class='questionBox '>
+          <view class='qbBg'>
+              <view class='qbInBox'>
+              <block wx:for="{{topics.question_sentence}}" wx:key="*this" wx:for-index="index" wx:for-item='subject'>
+                <text>{{subject}}</text>
+              </block>
+              </view>
+          </view>
+      </view>
+   </block> 
+   <block wx:if="{{topics.question_type==4}}">
+      <view class='questionBox '>
+          <view class='qbBg'>
+              <view class='qbInBox'>
+                <block wx:if="{{topics.up_and_down=='up'}}">
+                  <text>{{topics.up_sentence}}</text>
+                </block>
+                <block wx:else>
+                  <text>{{topics.down_sentence}}</text>
+                </block>
+              </view>
+          </view>
+      </view>
+   </block>  
+   <block wx:if="{{topics.question_type==5}}">
+            <view class='questionBox '>
+                  <view class='wordBox'>
+                      <view class='wordUl'>
+                        <block wx:for="{{column}}" wx:key="*this" wx:for-index="i">
+                            <view class='wordLi {{selecNum==i?"action":""}}' capture-bind:longpress="wordDeleHandler" capture-bind:tap="wordClickHandler" data-index="{{i}}"><text style='color:{{topicsAnswer[i]?"#333":"white"}}'>{{topicsAnswer[i]?topicsAnswer[i]:'-'}}</text></view>
+                        </block>
+                      </view>
+                      <view class='wordCheck' style='top:10px;right:-5px;'>
+                          <view class="checkImg {{check?'selectImg':'wrongImg'}}"  wx:if="{{hasDo}}"></view>
+                      </view>
+                      <view class='tips newtips'>
+                        {{hasDo?(check?"":"正确答案："):''}}
+                        <text style='{{hasDo?(check?"color:#999":"color:#23ac38"):"color:#999"}}'>{{hasDo?(check?'长按方块删除已选内容':rightText):'长按方块删除已选内容'}}</text>
+                      </view>
+                  </view>
+            </view>
+   </block>
+   <block wx:if="{{topics.question_type==6}}">
+      <view class='questionBox'>
+          <view class='qbBg'>
+              <view class='qbInBox'>
+              <block wx:for="{{topics.question_sentence}}" wx:key="*this" wx:for-index="index" wx:for-item='subject'>
+                <text>{{subject}}</text>
+              </block>
+              </view>
+          </view>
+      </view>
+   </block> 
+
+      <view class='titleBox'>
+          <block wx:if="{{topics.question_type==1}}">
+              <text>该内容的作者是谁？</text>
+          </block>
+          <block wx:if="{{topics.question_type==2}}">
+              <text>该内容出自哪部作品？</text>
+          </block>
+          <block wx:if="{{topics.question_type==3}}">
+              <text>该内容出自哪个朝代？</text>
+          </block>
+          <block wx:if="{{topics.question_type==4}}">
+              <block wx:if="{{topics.up_and_down=='up'}}">
+                <text>该内容的下句是？</text>
+              </block>
+              <block wx:else>
+                <text>该内容的上句是？</text>
+              </block>
+          </block>
+          <block wx:if="{{topics.question_type==5}}">
+              <text>识别出一句古诗词？</text>
+          </block>
+          <block wx:if="{{topics.question_type==6}}">
+              <text>该内容的错别字是？</text>
+          </block>
+      </view>
+
+    <block wx:if="{{topics.question_type<4}}">
+      <view class='answerUl'>
+        <block wx:for="{{topics.select_answer}}" wx:key="*this" wx:for-index="index" wx:for-item='answer'>
+          <view class="answerLi {{selecNum==index?(check?'green':'grey'):'white'}} {{rightNum==index?'right':'white'}}" data-index="{{index}}" data-text='{{answer}}' capture-bind:tap="answerSelectHandler">
+          <text>{{answer}}</text>
+          
+          <block wx:if="hasDo">
+              <block wx:if="{{selecNum==index}}">
+                  <view class='wordCheck' style='top:5px;right:5px;'><view class="checkImg {{rightNum==index?'selectImg':'wrongImg'}}" ></view></view>
+              </block>
+              <block wx:else>
+                  <view class='wordCheck' style='top:5px;right:5px;'><view class="checkImg {{rightNum==index?'rightImg':''}}" ></view></view>
+              </block>
+          </block>
+          </view>
+          </block>
+      </view>
+
+    </block>
+    <block wx:if="{{topics.question_type==4}}">
+              <view class='questionBox '>
+                  <view class='wordBox'>
+                      <view class='wordUl'>
+                        <block wx:for="{{topics.sentence_length}}" wx:key="*this" wx:for-index="i">
+                            <view class='wordLi {{selecNum==i?"action":""}}' capture-bind:longpress="wordDeleHandler" capture-bind:tap="wordClickHandler" data-index="{{i}}"><text style='color:{{topicsAnswer[i]?"#333":"white"}}'>{{topicsAnswer[i]?topicsAnswer[i]:'-'}}</text></view>
+                        </block>
+                      </view>
+                      <view class='wordCheck' style='top:10px;right:-5px;'><view class="checkImg {{check?'selectImg':'wrongImg'}}"  wx:if="{{hasDo}}"></view></view>
+                    <view class='tips newtips'>{{hasDo?(check?"":"正确答案："):''}}<text style='{{hasDo?(check?"color:#999":"color:#23ac38"):"color:#999"}}'>{{hasDo?(check?'长按方块删除已选内容':rightText):'长按方块删除已选内容'}}</text></view>
+                  </view>
+              </view>
+               <block wx:for="{{row}}" wx:key="*this" wx:for-item="i">
+                    <view class='answerUl {{column==7?"sevenUl":"fiveUl"}}'>
+                          <block wx:for="{{column}}" wx:key="*this" wx:for-item='j' wx:for-index='f'>
+                              <block wx:if="j<i">
+                                  <view class="answerLi white" data-index="{{i*column+j}}" data-text='{{topics.select_answer[i*column+j]}}' capture-bind:tap="answerWordHandler"  wx:if="{{topics.select_answer[i*column+j]}}" >
+                                      <text>{{topics.select_answer[i*column+j]}}</text>
+                                  </view>
+                              </block>
+                          </block>
+                    </view>
+                </block>
+
+    </block>
+    <block wx:if="{{topics.question_type==5}}">
+               <block wx:for="{{row}}" wx:key="*this" wx:for-item="i">
+                    <view class='answerUl {{column==7?"sevenUl":"fiveUl"}}'>
+                          <block wx:for="{{column}}" wx:key="*this" wx:for-item='j' wx:for-index='f'>
+                              <block wx:if="j<i">
+                                  <view class="answerLi white" data-index="{{i*column+j}}" data-text='{{topics.select_answer[i*column+j]}}' capture-bind:tap="answerWordHandler" wx:if="{{topics.select_answer[i*column+j]}}" >
+                                      <text>{{topics.select_answer[i*column+j]}}</text>
+                                  </view>
+                              </block>
+                          </block>
+                    </view>
+                </block>
+    </block>
+    <block wx:if="{{topics.question_type==6}}">
+          <view class='wordCheckOutBox'>
+                  <view class='wordCheck'><view class="checkImg {{check?'selectImg':'wrongImg'}}"  wx:if="{{hasDo}}"></view></view>
+          </view>
+               <block wx:for="{{row}}" wx:key="*this" wx:for-item="i">
+                    <view class='answerUl {{column==7?"sevenUl":"fiveUl"}}'>
+                          <block wx:for="{{column}}" wx:key="*this" wx:for-item='j' wx:for-index='f'>
+                              <block wx:if="j<i">
+                                  <view class="answerLi {{selecNum==(i*column+j)?(check?'green':'grey'):'white'}} {{rightNum==(i*column+j)?'right':'white'}}" data-index="{{i*column+j}}" data-text='{{topics.select_answer[i*column+j]}}' capture-bind:tap="answerSelectHandler"  wx:if="{{topics.select_answer[i*column+j]}}" >
+                                      <text>{{topics.select_answer[i*column+j]}}</text>
+                                  </view>
+                              </block>
+                          </block>
+                    </view>
+                </block>
+    </block>

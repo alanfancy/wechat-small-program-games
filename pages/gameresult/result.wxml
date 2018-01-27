@@ -1,0 +1,49 @@
+<!--pages/games/peotry/guessauthor/result.wxml-->
+
+<view class='resultBox bgimg'>
+
+    <view class='resTit'><text>如果能穿越，你能去哪里？</text></view>
+    <view class='chartBox '>
+     <canvas canvas-id="radarCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+    </view>
+    <view class='resStit'><text>你适合穿越去</text><text class='span'>{{dynastyTxt}}</text><text>代哦~</text></view>
+    <view class='resTips'><text>（测试越多，结果越准确哟）</text></view>
+    
+    <block wx:if="{{sharePage==1}}">
+        <view class='btnBox shareBtn'>
+            <view class='btnBg' capture-bind:tap="saveImagesHandler">保存图片</view>
+        </view>
+        <view class='shareBox'>
+            <view class='shareleft'><image class='codeImg' src='../../../../image/page/code.png'></image></view>
+            <view class='shareright'>长按二维码，您也来试试吧！</view>
+        </view>
+    </block>
+    <block wx:elif="{{sharePage==0}}">
+          <view class='tableOutBox'>
+              <view class='tableBg'>
+                  <view class='table '>
+                      <view class='tr'>
+                            <view class='td'>本局用时</view>
+                            <view class='td'>{{usetime}}</view>
+                      </view>
+                      <view class='tr'>
+                            <view class='td'>本局得分</view>
+                            <view class='td'>{{score}}</view>
+                      </view>
+                      <view class='tr'>
+                            <view class='td'>本局表现</view>
+                            <view class='td'>连续{{continuityTotal?continuityTotal:0}}题正确</view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+          <view class='btnBox'>
+              <view class=' resultBtn'>
+                    <button class='btn b1 btnBg' capture-bind:tap="playAgainHandler" >再来一次</button>
+                    <button class='btn b2 btnBg'  open-type="share">分享</button>
+                    <button class='btn b3 btnBg' wx:if="{{!hastoken}}" capture-bind:tap="playMore" data-linkUrl="../user/bindphone/index">更多游戏</button>
+              </view>
+              <!--<view class='btnBg' capture-bind:tap="playAgainHandler" data-linkUrl="../index">绑定手机玩更多游戏</view>-->
+          </view>
+    </block>
+</view>
